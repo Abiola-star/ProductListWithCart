@@ -14,7 +14,7 @@ export default function SignInPage() {
   const [formData, setFormData] = useState(initialFormState);
   const [errors, setErrors] = useState({});
   const [submitError, setSubmitError] = useState('');
-
+  const [isLoading, setIsLoading] = useState(false)
   const handleChange = ({ target: { name, value } }) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
     setErrors((prev) => ({ ...prev, [name]: '' }));
@@ -36,7 +36,7 @@ export default function SignInPage() {
     if (!validateForm()) return;
     setSubmitError('');
     console.log('Sign In Data:', formData);
-    setLoading(true)
+    setIsLoading(true)
      try {
       const response = await fetch(`http://localhost:5000/api/user/signin`, {
               method: "POST",
@@ -54,7 +54,7 @@ export default function SignInPage() {
     } catch (error) {
       setSubmitError("something went wrong. Please try again", error)
     } finally{
-      setloading(false)
+      setIsLoading(false)
     }
   };
  
@@ -111,7 +111,7 @@ export default function SignInPage() {
             type="submit"
             className="bg-rose-300 text-white font-bold text-lg h-12 rounded-md w-full"
           >
-            Sign In
+           {isLoading ? "signing in" : "sign in"}
           </button>
 
           <button
