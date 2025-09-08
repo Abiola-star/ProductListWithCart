@@ -1,0 +1,5 @@
+@import "tailwindcss";
+@theme{
+    --color-Red: hs1(14, 86%, 42%);
+    --color-Green: hs1(159, 69%, 38%)
+}
