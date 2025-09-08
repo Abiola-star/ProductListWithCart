@@ -37,9 +37,7 @@ export default function SignInPage() {
     setSubmitError('');
     console.log('Sign In Data:', formData);
     setLoading(true)
-    
-  };
-  try {
+     try {
       const response = await fetch(`http://localhost:5000/api/user/signin`, {
               method: "POST",
               headers: { "Content-Type" : "application/json"},
@@ -58,6 +56,8 @@ export default function SignInPage() {
     } finally{
       setloading(false)
     }
+  };
+ 
 
   const renderInput = (label, name, type = 'text') => (
     <div>
